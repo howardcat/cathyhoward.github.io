@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cathy Howard — Mortgage Professional</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --ink: #1f2a2e;
+    --paper: #e8f4f0;
+    --accent: #1d9e75;
+    --accent2: #2c3e44;
+    --mid: #6a8c85;
+    --rule: rgba(29,158,117,0.15);
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--paper);
+    color: var(--ink);
+    font-size: 15px;
+    line-height: 1.6;
+  }
+
+  .hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    padding: 0;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    background:
+      repeating-linear-gradient(
+        90deg,
+        transparent,
+        transparent 79px,
+        var(--rule) 79px,
+        var(--rule) 80px
+      );
+    opacity: 0.5;
+  }
+
+  .hero-nav {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2rem 3rem;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .hero-nav .logo {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.1rem;
+    letter-spacing: 0.15em;
+    color: var(--accent2);
+  }
+
+  .hero-nav .tagline {
+    font-size: 0.75rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--mid);
+  }
+
+  .hero-main {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 4rem 3rem 2rem;
+  }
+
+  .kicker {
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 1.25rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+  .kicker::before {
+    content: '';
+    display: block;
+    width: 2rem;
+    height: 1.5px;
+    background: var(--accent);
+  }
+
+  h1 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(4.5rem, 12vw, 9rem);
+    line-height: 0.92;
+    letter-spacing: 0.02em;
+    color: var(--ink);
+    margin-bottom: 0.5rem;
+  }
+
+  h1 span { color: var(--accent); }
+
+  .hero-sub {
+    font-size: 1.05rem;
+    color: var(--mid);
+    max-width: 480px;
+    margin-top: 1.5rem;
+    font-weight: 300;
+    line-height: 1.75;
+  }
+
+  .hero-stats {
+    position: relative;
+    z-index: 2;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    border-top: 1px solid var(--rule);
+  }
+
+  .stat {
+    padding: 1.5rem 3rem;
+    border-right: 1px solid var(--rule);
+  }
+  .stat:last-child { border-right: none; }
+
+  .stat-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 2.4rem;
+    letter-spacing: 0.05em;
+    color: var(--accent2);
+    display: block;
+  }
+
+  .stat-label {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--mid);
+    margin-top: 0.15rem;
+  }
+
+  section {
+    padding: 5rem 3rem;
+    border-top: 1px solid var(--rule);
+  }
+
+  .section-header {
+    display: flex;
+    align-items: baseline;
+    gap: 1.5rem;
+    margin-bottom: 3rem;
+  }
+
+  .section-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 0.85rem;
+    letter-spacing: 0.15em;
+    color: var(--accent);
+  }
+
+  h2 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 2.8rem;
+    letter-spacing: 0.04em;
+    color: var(--ink);
+    line-height: 1;
+  }
+
+  .exp-item {
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    gap: 2rem;
+    padding: 2rem 0;
+    border-bottom: 1px solid var(--rule);
+  }
+  .exp-item:last-child { border-bottom: none; }
+
+  .exp-date {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--accent);
+    display: block;
+    margin-bottom: 0.5rem;
+  }
+
+  .exp-company {
+    font-weight: 500;
+    font-size: 0.9rem;
+    color: var(--ink);
+  }
+
+  .exp-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.4rem;
+    letter-spacing: 0.04em;
+    color: var(--ink);
+    margin-bottom: 0.75rem;
+    line-height: 1.1;
+  }
+
+  .exp-body {
+    font-size: 0.88rem;
+    color: var(--mid);
+    line-height: 1.8;
+  }
+
+  .exp-body ul { list-style: none; padding: 0; }
+
+  .exp-body li {
+    padding-left: 1.1rem;
+    position: relative;
+    margin-bottom: 0.35rem;
+  }
+
+  .exp-body li::before {
+    content: '—';
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+    font-size: 0.7rem;
+    top: 0.3em;
+  }
+
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .skill-card {
+    background: var(--ink);
+    color: var(--paper);
+    padding: 1.75rem 1.5rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .skill-card::after {
+    content: '';
+    position: absolute;
+    bottom: 0; right: 0;
+    width: 60px; height: 60px;
+    background: var(--accent);
+    clip-path: polygon(100% 0, 100% 100%, 0 100%);
+    opacity: 0.6;
+  }
+
+  .skill-card-label {
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--accent);
+    display: block;
+    margin-bottom: 0.5rem;
+  }
+
+  .skill-card-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.3rem;
+    letter-spacing: 0.06em;
+    line-height: 1.15;
+  }
+
+  .skill-card-items {
+    margin-top: 1rem;
+    font-size: 0.78rem;
+    color: rgba(245,242,236,0.6);
+    line-height: 1.9;
+  }
+
+  .contact-strip {
+    background: var(--ink);
+    color: var(--paper);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 3rem;
+  }
+
+  .contact-heading {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 2.5rem;
+    letter-spacing: 0.05em;
+    line-height: 1;
+  }
+
+  .contact-heading span { color: var(--accent); }
+
+  .contact-links {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    text-align: right;
+  }
+
+  .contact-links a {
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: rgba(245,242,236,0.55);
+    text-decoration: none;
+  }
+
+  .contact-links a span {
+    color: var(--paper);
+    margin-right: 0.5rem;
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .hero-main > * {
+    animation: fadeUp 0.7s ease both;
+  }
+  .hero-main > *:nth-child(1) { animation-delay: 0.1s; }
+  .hero-main > *:nth-child(2) { animation-delay: 0.25s; }
+  .hero-main > *:nth-child(3) { animation-delay: 0.4s; }
+  .hero-main > *:nth-child(4) { animation-delay: 0.55s; }
+</style>
+</head>
+<body>
+
+<section class="hero" style="border-top:none; padding:0;">
+  <div class="hero-bg"></div>
+  <nav class="hero-nav">
+    <div class="logo">Cathy Howard</div>
+    <div class="tagline">Mortgage Professional · Clackamas County, OR</div>
+  </nav>
+  <div class="hero-main">
+    <div class="kicker">10+ Years in Mortgage</div>
+    <h1>The<br><span>Fixer</span><br>in the<br>Room.</h1>
+    <p class="hero-sub">
+      Default servicing specialist who catches what others miss — from a borrower whose nickname on payments didn't match the legal name on the loan, triggering a payment rejection that could have led to wrongful foreclosure, to forensic documentation disputes in federal court. I don't just process loans; I protect outcomes.
+    </p>
+  </div>
+  <div class="hero-stats">
+    <div class="stat">
+      <span class="stat-num">10+</span>
+      <div class="stat-label">Years of Experience</div>
+    </div>
+    <div class="stat">
+      <span class="stat-num">95%+</span>
+      <div class="stat-label">QC Accuracy Rate</div>
+    </div>
+    <div class="stat">
+      <span class="stat-num">FNMA · FHA · VA · USDA</span>
+      <div class="stat-label">Loan Types</div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="section-header">
+    <span class="section-num">01</span>
+    <h2>Experience</h2>
+  </div>
+  <div>
+    <div class="exp-item">
+      <div>
+        <span class="exp-date">2020 – 2022</span>
+        <div class="exp-company">Freedom Mortgage Corporation</div>
+      </div>
+      <div>
+        <div class="exp-title">QC Specialist & Underwriter</div>
+        <div class="exp-body">
+          <ul>
+            <li>Audited 5–12 loan packages daily across FNMA, FHLMC, FHA, VA, and USDA guidelines with 95%+ accuracy</li>
+            <li>Identified and escalated regulatory compliance deficiencies, reducing post-close error exposure</li>
+            <li>Analyzed income, assets, credit, and property documentation for underwriting decisions</li>
+            <li>Position eliminated in company-wide restructuring</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="exp-item">
+      <div>
+        <span class="exp-date">11/2016 – 7/2018</span>
+        <div class="exp-company">Seterus, Inc. (IBM)</div>
+      </div>
+      <div>
+        <div class="exp-title">Foreclosure Sale Coordinator</div>
+        <div class="exp-body">
+          <ul>
+            <li>Coordinated FNMA foreclosure files from referral through sale decision, managing attorney pipelines and statutory deadlines; loans transferred to title resolution upon sheriff sale determination</li>
+            <li>Prevented a wrongful foreclosure by identifying that a borrower's nickname on incoming payments didn't match the legal name on the loan — stopping erroneous payment rejections before the file advanced to sale</li>
+            <li>Liaised with attorneys, vendors, and internal management to keep files moving within required timelines</li>
+            <li>Position eliminated in 2018 ahead of Seterus acquisition and restructuring</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="exp-item">
+      <div>
+        <span class="exp-date">9/2011 – 11/2016</span>
+        <div class="exp-company">Seterus, Inc. (IBM)</div>
+      </div>
+      <div>
+        <div class="exp-title">Litigation Support Specialist</div>
+        <div class="exp-body">
+          <ul>
+            <li>Supported litigation involving a borrower who disputed mortgage document authenticity through six rounds of inconclusive forensic handwriting analyses</li>
+            <li>Compiled foreclosure trial documentation packages for attorneys preparing for court</li>
+            <li>Executed discovery documents and approved attorney fees</li>
+            <li>Researched origination documents from prior servicers to support active litigation</li>
+            <li>Liaised with attorneys, vendors, and corporate foreclosure litigation officers who attended court on behalf of the servicer</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section>
+  <div class="section-header">
+    <span class="section-num">02</span>
+    <h2>Core Skills</h2>
+  </div>
+  <div class="skills-grid">
+    <div class="skill-card">
+      <span class="skill-card-label">Specialty</span>
+      <div class="skill-card-title">Default Servicing</div>
+      <div class="skill-card-items">Foreclosure Sale Coordination<br>Loss Mitigation<br>Litigation Support<br>Attorney Pipeline Management</div>
+    </div>
+    <div class="skill-card">
+      <span class="skill-card-label">Specialty</span>
+      <div class="skill-card-title">QC & Underwriting</div>
+      <div class="skill-card-items">FNMA · FHLMC · FHA<br>VA · USDA Guidelines<br>Income / Asset / Credit Analysis<br>Compliance Review</div>
+    </div>
+    <div class="skill-card">
+      <span class="skill-card-label">Systems</span>
+      <div class="skill-card-title">Technology</div>
+      <div class="skill-card-items">MSP · Black Knight / LPS<br>Sagent · Fiserv · LoanServ<br>Pulse · DocuWare · SCI<br>Safeguard Properties</div>
+    </div>
+    <div class="skill-card">
+      <span class="skill-card-label">Strengths</span>
+      <div class="skill-card-title">What I Bring</div>
+      <div class="skill-card-items">Process Problem-Solving<br>Cross-functional Coordination<br>Attention to Detail<br>Regulatory Accuracy</div>
+    </div>
+  </div>
+</section>
+
+<div class="contact-strip">
+  <div class="contact-heading">Let's<br><span>Connect.</span></div>
+  <div class="contact-links">
+    <a href="https://www.linkedin.com/in/cathy-howard"><span>LinkedIn</span>linkedin.com/in/cathy-howard</a>
+    <a href="mailto:howardcathy676@gmail.com"><span>Email</span>howardcathy676@gmail.com</a>
+    <a href="#"><span>Location</span>Clackamas County, OR</a>
+  </div>
+</div>
+
+</body>
+</html>
